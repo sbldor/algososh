@@ -106,7 +106,7 @@ export const QueuePage: FC = () => {
 
   return (
     <SolutionLayout title="Очередь">
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className={style.cont}>
           <Input
             value={input}
