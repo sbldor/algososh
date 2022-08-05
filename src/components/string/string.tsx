@@ -1,46 +1,19 @@
 import React, { useState, FC, SyntheticEvent, FormEvent } from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import style from './string.module.css';
-import { DELAY_IN_MS } from '../../constants/delays';
 import { ElementStates } from "../../types/element-states";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
-import { delay } from "../utils/utils"
-
-interface ICharacter {
-  character: string
-  state: ElementStates
-}
+import { ICharacter } from '../../types/types';
+import { reverseString } from './reverse-string'
 
 export const StringComponent: FC = () => {
 
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [stringArr, setStringArr] = useState<ICharacter[]>([]);
-  // алгоритм реверса 
-  const reverseString = async (arr: ICharacter[]) => {
-    const mid = arr.length / 2;
-    let count = 0;
-
-    while (count < mid) {
-      let start = arr[count];
-      let end = arr[arr.length - count - 1];
-
-      start.state = ElementStates.Changing;
-      end.state = ElementStates.Changing;
-      setStringArr([...arr]);
-      await delay(DELAY_IN_MS);
-
-      start.state = ElementStates.Modified;
-      end.state = ElementStates.Modified;
-      [arr[count], arr[arr.length - count - 1]] = [arr[arr.length - count - 1], arr[count]];
-      setStringArr([...arr]);
-      await delay(DELAY_IN_MS);
-
-      count ++;
-    };
-  };
+  
   // кладем значения инпута в стейт
   const changeInput = (e: SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -57,7 +30,7 @@ export const StringComponent: FC = () => {
         state: ElementStates.Default
       };
     });
-    await reverseString(inputArr);
+    await reverseString(inputArr, setStringArr);
     setInput('');
     setIsLoading(false);
   }
