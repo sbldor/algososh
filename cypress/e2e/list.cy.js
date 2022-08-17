@@ -1,10 +1,11 @@
 import { SHORT_DELAY_IN_MS, DELAY_IN_MS } from '../../src/constants/delays';
+import { baseTestUrl } from './utils.js'
 
 const tIndex = 2
 
 describe('list tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/list')
+    cy.visit(`${baseTestUrl}/list`)
   })
 
   it('buttons is inactive if the input is empty', () => {

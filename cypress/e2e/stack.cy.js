@@ -1,13 +1,11 @@
 import { SHORT_DELAY_IN_MS } from '../../src/constants/delays';
-import { checkDefaultCircleStyles, checkChangingCircleStyles } from './utils.js'; 
+import { baseTestUrl, checkDefaultCircleStyles, checkChangingCircleStyles } from './utils.js'; 
 
 describe('stack tests', () => {
 
   beforeEach(() => {
-    cy.visit('http://localhost:3000/stack')
+    cy.visit(`${baseTestUrl}/stack`)
   })
-
-  
 
   it('buttons is inactive if the input is empty', () => {
     cy.get('input').clear()

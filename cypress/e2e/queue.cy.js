@@ -1,10 +1,10 @@
 import { SHORT_DELAY_IN_MS } from '../../src/constants/delays';
-import { checkDefaultCircleStyles, checkChangingCircleStyles } from './utils';
+import { baseTestUrl, checkDefaultCircleStyles, checkChangingCircleStyles } from './utils';
 
 describe('Queue tests', () => {
 
   beforeEach(() => {
-    cy.visit('http://localhost:3000/queue')
+    cy.visit(`${baseTestUrl}/queue`)
   })
 
   it('submit button is inactive if the input is empty', () => {

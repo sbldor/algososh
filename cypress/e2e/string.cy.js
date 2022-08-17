@@ -1,9 +1,10 @@
 import { SHORT_DELAY_IN_MS } from '../../src/constants/delays';
+import { baseTestUrl } from './utils.js'
 
 describe('String e2e tests', () => {
 
   beforeEach(() => {
-    cy.visit('http://localhost:3000/recursion')
+    cy.visit(`${baseTestUrl}/recursion`)
   })
 
   it('button is inactive if the input is empty', () => {

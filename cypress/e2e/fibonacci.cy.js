@@ -1,9 +1,10 @@
 import { SHORT_DELAY_IN_MS } from '../../src/constants/delays';
+import { baseTestUrl } from './utils.js'
 
 describe('Fibonacci tests', () => {
 
   beforeEach(() => {
-    cy.visit('http://localhost:3000/fibonacci')
+    cy.visit(`${baseTestUrl}/fibonacci`)
   })
 
   it('button is inactive if the input is empty', () => {
